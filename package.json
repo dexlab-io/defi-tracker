@@ -1,0 +1,36 @@
+{
+  "name": "defi-tracker",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexintosh/defi-tracker.git"
+  },
+  "keywords": [
+    "defi",
+    "uniswap",
+    "compound"
+  ],
+  "author": "Alessio Delmonti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alexintosh/defi-tracker/issues"
+  },
+  "homepage": "https://github.com/Alexintosh/defi-tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11",
+    "sequelize-cli": "^5.4.0"
+  }
+}

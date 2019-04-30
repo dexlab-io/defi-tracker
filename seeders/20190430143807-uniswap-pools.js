@@ -31,11 +31,6 @@ const pools = [
       erc20Address: "0xa4e8c3ec456107ea67d3075bf9e3df3a75823db0",
   },
   {
-      symbol: "MKR",
-      exchangeAddress: "0x2c4bd064b998838076fa341a83d007fc2fa50957",
-      erc20Address: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
-  },
-  {
       symbol: "ZRX",
       exchangeAddress: "0xae76c84c9262cdb9abc0c2c8888e62db8e22a0bf",
       erc20Address: "0xe41d2489571d322189246dafa5ebde1f4699f498",

@@ -26,11 +26,9 @@ require('./server/routes')(app);
 app.get('/test', async (req, res) => {
     // console.log('EthereumHDWallet', EthereumHDWallet)
     const t = new EthereumHDWallet(null, '0x5e90bDc06E1aF172ce97fA8a029D0587eCE6a831');
-    await t.Maker.getState();
-
-    console.log('this.CDPs', t.Maker.CDPs);
+    const events = await t.Uniswap.getMarketData(t.Uniswap.markets[20]);
     
-    res.status(200).send(t.Maker.CDPs)
+    res.status(200).send(events)
 });
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.

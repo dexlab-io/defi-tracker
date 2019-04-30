@@ -8,9 +8,6 @@ const http = require('http');
 global.fetch = require("node-fetch");
 
 import EthereumHDWallet from './lib/ethereum/EthereumHDWallet';
-
-
-
 // Set up the express app
 const app = express();
 app.use(logger('dev'));
@@ -22,15 +19,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Adding routes
 require('./server/routes')(app);
 
-app.get('/test', async (req, res) => {
-    // console.log('EthereumHDWallet', EthereumHDWallet)
-    const t = new EthereumHDWallet(null, '0x5e90bDc06E1aF172ce97fA8a029D0587eCE6a831');
-    const events = await t.Uniswap.getMarketData(t.Uniswap.markets[20]);
-
-
-    
-    res.status(200).send(events)
+app.get('/test/:name', async (req, res) => {
+    const t = new EthereumHDWallet(req.params.name);
+    await t.fetchBalance();
+    res.status(200).send(`${t.getAddress()} - ${t.balance} - ${req.params.name}`) 
 });
+
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 app.get('*', (req, res) => res.status(200).send({

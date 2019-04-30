@@ -4,6 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     exchangeAddress: DataTypes.STRING,
     symbol: DataTypes.STRING,
     erc20Address: DataTypes.STRING,
+    ethPoolTotal: DataTypes.FLOAT,
+    tokenPoolTotal: DataTypes.FLOAT,
+    totalSell: DataTypes.INTEGER, 
+    totalBuy: DataTypes.INTEGER,
+    totalVolume: DataTypes.FLOAT,
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: sequelize.literal('NOW()')

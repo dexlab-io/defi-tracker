@@ -1,5 +1,7 @@
-const UniPool = require('./UniPool');
+import UniPool from './UniPool';
+import Wallet from './Wallet';
 
 module.exports = {
-    UniPool
+    UniPool,
+    Wallet
 };

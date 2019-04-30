@@ -4,6 +4,7 @@ module.exports = (app) => {
     app.get('/api/unipools', UniPool.getAll);
     app.get('/api/unipool/token/:tokenAddress', UniPool.byToken);
     app.get('/api/unipool/exchange/:exchangeAddress', UniPool.byExchangeAddress);
+    app.get('/api/unipool/exchange/:exchangeAddress/update', UniPool.updateStats);
 
 
     /**

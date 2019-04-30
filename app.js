@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
-
 /**
  * Poly for fetch
  */
@@ -27,6 +26,8 @@ app.get('/test', async (req, res) => {
     // console.log('EthereumHDWallet', EthereumHDWallet)
     const t = new EthereumHDWallet(null, '0x5e90bDc06E1aF172ce97fA8a029D0587eCE6a831');
     const events = await t.Uniswap.getMarketData(t.Uniswap.markets[20]);
+
+
     
     res.status(200).send(events)
 });

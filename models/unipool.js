@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   const UniPool = sequelize.define('UniPool', {
     exchangeAddress: DataTypes.STRING,
@@ -9,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     totalSell: DataTypes.INTEGER, 
     totalBuy: DataTypes.INTEGER,
     totalVolume: DataTypes.FLOAT,
+    lastBlockCheck: DataTypes.INTEGER,
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: sequelize.literal('NOW()')

@@ -4,7 +4,7 @@
     "password": null,
     "database": "defi-tracker",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mariadb"
   },
   "test": {
     "username": "root",

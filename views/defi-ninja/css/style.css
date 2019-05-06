@@ -1,0 +1,319 @@
+              
+             /* Generic CSS */
+
+             * {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+              :root {
+                        --almost-black: #0a0a0a;
+                        --light-black: #acacac;
+                        --almost-white: #F2F2F2;
+                        --white: #ffffff;
+                        --text-big: 3rem;
+                        --text-medium: 1.1rem;
+                        --text-prettysmall: 0.9rem;
+                        --text-small: 0.8rem;
+                        --main-font: 'Roboto Mono', monospace;
+                }
+
+                ::-webkit-scrollbar {
+                    width: 0px;  /* Remove scrollbar space */
+                    background: transparent;  /* Optional: just make scrollbar invisible */
+                }
+
+                html,
+                body {
+                        margin: 0;
+                        background-color: var(--almost-white);
+                        font-family: var(--main-font);
+                        font-weight: 300;
+                }
+
+                a {
+                        color: var(--almost-black);
+                        opacity: 0.6;
+
+                }
+
+                a:hover {
+                        opacity: 1;
+                }
+
+/* Wallet */
+
+
+.walletContainer {
+    width: 92%;
+    padding: 3% 4% 1% 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menuLeft {
+    display: flex;
+    flex-grow: 8;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hamburgerMenu {
+    display: flex;
+    flex-grow: 2;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.header {
+    width: 100%;
+    padding: 2% 0;
+    margin: 0.5% 0;
+    display: flex;
+    flex-direction: row;
+    font-size: var(--text-prettysmall);
+}
+
+.walletLogo {
+    margin-right: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.topAddress {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.topBalance {
+    display: flex;
+    flex-direction: row;
+}
+
+.yourAddressTitle {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    margin-right: 10px;
+
+}
+
+.yourAddress {
+    display: flex;
+    align-items: center;
+}
+
+.yourBalanceTitle {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    margin-right: 10px;
+
+}
+
+.yourBalance {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.assetValue {
+    width: 23%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 700;
+}
+
+
+   
+/* Cards */
+                .cardsContainer {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        width: 92%;
+                        padding: 2% 4% 0 4%;
+
+                        flex-wrap: nowrap;
+                        overflow-x: scroll;
+                        overflow-y: hidden;
+                        white-space: nowrap;
+                        -webkit-overflow-scrolling: touch;
+
+                }
+
+                .DeFiCard {
+                        width: 300px;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: var(--text-prettysmall);
+                        padding: 1% 2%;
+                        margin: 0 0.5%;
+                        border-radius: 10px;
+                        background-color: var(--white);
+
+                        flex: 0 0 auto;
+
+                }
+
+                .row {
+                        display: flex;
+                        flex-grow: 1;
+                        width: 100%;
+                        padding: 4% 0;
+                }
+
+                .left {
+                        display: flex;
+                        flex-grow: 1;
+                        text-align: left;
+                        font-weight: 700;
+                        align-items: center;
+                }
+
+                .right {
+                        display: flex;
+                        text-align: right;
+                        align-items: center;
+                }
+
+                .logoRow {
+                        margin-bottom: 10px;
+                }
+
+                .positive {
+                        background-color: rgb(22, 209, 147);
+                        color: var(--white);
+                        font-weight: 700;
+                        border-radius: 15px;
+                        padding: 5px 10px;
+                }
+
+                .negative {
+                        background-color: rgb(209, 22, 84);
+                        color: var(--white);
+                        font-weight: 700;
+                        border-radius: 15px;
+                        padding: 5px 10px;
+                }
+
+/* Tokens */
+
+.tokenContainer {
+    width: 92%;
+    padding: 1% 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.tokenCard {
+    width: 100%;
+    padding: 2% 0;
+    margin: 1% 0 0.5% 0;
+    display: flex;
+    flex-direction: row;
+    font-size: var(--text-prettysmall);
+    border-radius: 10px;
+    background-color: var(--white);
+}
+
+.assetLogo {
+    width: 5%;
+    text-align: center;
+    align-items: center;
+}
+
+.assetName {
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.assetName.title {
+    width: 23%;
+    margin-left: 2%;
+}
+
+.assetAmount {
+    width: 24%;
+    display: flex;
+    align-items: center;
+}
+
+.assetPrice {
+    width: 16%;
+    display: flex;
+    align-items: center;
+}
+
+.assetPriceVariation {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.assetValue {
+    width: 23%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 700;
+}
+
+.bold {font-weight: 700;}
+.black {color: var(--almost-black)!important;}
+.plus {color: rgb(22, 209, 147);}
+.minus {color: rgb(209, 22, 84);}
+.tokenCard.transparent {background-color: var(--almost-white);}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    /* Wallets */
+    .topAddress { display: none; }
+
+    /* Cards */
+    .DeFiCard { width: 84%; margin: 0 2% 0 0; padding: 2% 8%;}
+
+    /* Tokens */
+    .tokenCard { margin: 1% 0; padding: 4% 0; }
+    .desktop { display: none; }
+    .assetLogo { width: 5%; padding: 0 2%; }
+    .assetName { width: 23%; padding: 0 2%; }
+    .assetAmount { width: 30%; padding: 0 2%; }
+    .assetPrice { display: none; }
+    .assetPriceVariation { display: none; }
+    .assetValue { width: 35%; padding: 0 2%; }
+
+}
+
+@media (max-width: 450px) {
+
+    /* TOP */
+    /* .yourBalanceTitle { display: none; } */
+
+    .walletLogo {
+        margin-right: 10px;
+    }
+
+    /* Tokens */
+    .assetName { display: none; }
+    .assetLogo { width: 5%; padding: 0 4%; }
+    .assetAmount { width: 41%; padding: 0 4%; }
+    .assetValue { width: 46%; padding: 0 4%; }
+        
+
+
+}

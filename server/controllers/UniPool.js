@@ -26,17 +26,14 @@ module.exports = {
     },
 
     updateStats: async (req, res) => {
-        console.log('req', req.params);
         const data = await UniPool.findOne({
             where: {
                 exchangeAddress: req.params.exchangeAddress
             }
         }) || {};
 
-        console.log('data', data)
-
         const t = new EthereumHDWallet(null, '0x5e90bDc06E1aF172ce97fA8a029D0587eCE6a831');
-        const stats = await t.Uniswap.getMarketData(data, t.lastBlockCheck);
+        const stats = await t.Uniswap.getMarketData(data, data.lastBlockCheck);
 
         //console.log('stats', stats)
         data.ethPoolTotal = stats.curEthPoolTotal;

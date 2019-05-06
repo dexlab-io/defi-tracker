@@ -1,3 +1,4 @@
+require("@babel/polyfill");
 // Transpile all code following this line with babel and use '@babel/preset-env' (aka ES6) preset.
 // https://timonweb.com/posts/how-to-enable-es6-imports-in-nodejs/
 require("@babel/register")({

@@ -82,7 +82,13 @@
     display: flex;
     text-align: center;
     align-items: center;
+    opacity: 1;
 }
+
+.walletLogo > * {
+    opacity: 1;
+}
+
 
 .topAddress {
     margin-right: 50px;

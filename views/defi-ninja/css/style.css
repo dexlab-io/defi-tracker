@@ -12,7 +12,7 @@
                         --almost-white: #F2F2F2;
                         --white: #ffffff;
                         --text-big: 3rem;
-                        --text-medium: 1.1rem;
+                        --text-medium: 1.2rem;
                         --text-prettysmall: 0.9rem;
                         --text-small: 0.8rem;
                         --main-font: 'Roboto Mono', monospace;
@@ -281,6 +281,24 @@
 .plus {color: rgb(22, 209, 147);}
 .minus {color: rgb(209, 22, 84);}
 .tokenCard.transparent {background-color: var(--almost-white);}
+
+
+.footerMenu {
+    width: 88%;
+    padding: 3% 6%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+a.menuItem {
+    display: flex;
+    text-decoration: none;
+    opacity: 1;
+
+}
+
 
 
 /* Mobile */

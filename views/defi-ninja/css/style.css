@@ -33,8 +33,7 @@
 
                 a {
                         color: var(--almost-black);
-                        opacity: 0.6;
-
+                        /* opacity: 0.6; */
                 }
 
                 a:hover {
@@ -84,11 +83,6 @@
     align-items: center;
     opacity: 1;
 }
-
-.walletLogo > * {
-    opacity: 1;
-}
-
 
 .topAddress {
     margin-right: 50px;

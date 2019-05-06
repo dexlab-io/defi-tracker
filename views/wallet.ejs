@@ -257,7 +257,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                         <span class="assetName"><%= token.name %></span>
                         <span class="assetAmount"><%= token.symbol %> <%= token.balance.toFixed(4) %></span>
                         <span class="assetPrice">
-                            <% if (token.price) { %>
+                            <% if (token.price && token.price.rate) { %>
                                 $<%= token.price.rate.toFixed(2) %>
                             <% } else { %> -- <% }%>
                         </span>
@@ -281,6 +281,6 @@ formatFiat = (value, separator=',', decimal='.') => {
 
         </div>
         <div>
-            
+
         </div>
 </body>

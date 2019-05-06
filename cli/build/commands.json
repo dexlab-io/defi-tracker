@@ -1,0 +1,29 @@
+{
+	"commands": [
+		{
+			"path": "/Users/alexintosh/Code/DEXLAB/defi-tracker/cli/commands/updateAll.js",
+			"buildPath": "/Users/alexintosh/Code/DEXLAB/defi-tracker/cli/build/commands/updateAll.js",
+			"name": "updateAll",
+			"description": "This is my command description",
+			"args": [],
+			"subCommands": []
+		},
+		{
+			"path": "/Users/alexintosh/Code/DEXLAB/defi-tracker/cli/commands/index.js",
+			"buildPath": "/Users/alexintosh/Code/DEXLAB/defi-tracker/cli/build/commands/index.js",
+			"name": "index",
+			"description": "This is my command description",
+			"args": [
+				{
+					"key": "exchange",
+					"type": "string",
+					"description": "This is \"name\" option description",
+					"isRequired": true,
+					"aliases": [],
+					"positional": false
+				}
+			],
+			"subCommands": []
+		}
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"name": "defi-cli",
+	"bin": "./build/cli.js",
+	"scripts": {
+		"build": "pastel build",
+		"dev": "pastel dev",
+		"prepare": "pastel build"
+	},
+	"dependencies": {
+		"ink": "^2.1.1",
+		"node-fetch": "^2.5.0",
+		"pasteljs": "^1.0.1",
+		"prop-types": "^15.7.2",
+		"react": "^16.8.6"
+	}
+}

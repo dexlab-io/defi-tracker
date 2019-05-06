@@ -11,6 +11,8 @@ module.exports = (app) => {
      * Wallet API
      */
     app.get('/api/wallet/:wallet', Wallet.get);
+    app.get('/wallet/:wallet', Wallet.walletView);
+
     app.get('/api/wallet/:wallet/transactions', Wallet.getTxs);
     app.get('/api/wallet/:wallet/collectibles', Wallet.getCollectibles);
     app.get('/api/wallet/:wallet/tokens', Wallet.getTokens);

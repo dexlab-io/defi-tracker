@@ -1,0 +1,274 @@
+<%
+formatFiat = (value, separator=',', decimal='.') => {
+    if(!value) return;
+    try {
+      const values = value.toString().replace(/^-/, '').split('.');
+      const dollars = values[0];
+      const cents = values[1];
+      const groups = /(\d)(?=(\d{3})+\b)/g;
+      return '#'.replace('#', `${dollars.replace(groups, '$1' + separator)}${cents ? decimal + cents : ''}`)
+    } catch(e) {
+      console.error(e);
+      return value;
+    }
+  }
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charSet="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <title>Dexlab.io - The Open Financial System of the future. Today.</title>
+        <meta name="description"
+                content="Saving, Investing, Exchange, Lending and Insurance services for individuals and commerce.">
+        <meta name="keywords"
+                content="Defi, Open Finance, Decentralized, Ethereum, Wallet, Pos, DAI, Crypto, Blockchain">
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
+        <meta property="og:image" content="/img/preview.jpg">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon32.png" />
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,700" rel="stylesheet">
+
+        <style>
+
+        </style>
+
+</head>
+
+<body>
+
+                <div class="walletContainer">
+                        <span class="menuLeft">
+                                <span class="walletLogo"><img src="/img/wallet.svg" height="30px"></span>
+                                <span class="topAddress">
+                                        <span class="yourAddressTitle">Your Address </span>
+                                        <span class="yourAddress"><%= wallet.address %></span>
+                                 </span> 
+                                 <span class="topBalance">
+                                <span class="yourBalanceTitle">Net worth</span>
+                                <span class="yourBalance">+$ <%= formatFiat(wallet.netWorthUSD) %></span>
+                        </span>
+                </span>
+                                <span class="hamburgerMenu"><a href="#"><img src="/img/hamburger.svg" height="20px"></a></span>
+                </div>
+
+
+
+
+
+
+        <div class="cardsContainer">
+
+                <% wallet.uniswap.forEach((c) => {%> 
+                    <div class="DeFiCard">
+                            <span class="row logoRow">
+                                    <span class="left">
+                                            <img src="/img/uniswap.svg" height="26px">
+                                    </span>
+                                    <span class="right">
+                                            <a href="#">show more</a>
+                                    </span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Balance</span>
+                                    <span class="right"><%= formatFiat(c.poolShare.token) %> <%= c.symbol %> + <%= formatFiat(c.poolShare.eth) %> ETH</span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Liquidity Token</span>
+                                    <span class="right"><%= c.liquidityTokens %></span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Value</span>
+                                    <span class="right">
+                                            <span class="positive">
+                                                    $<%= formatFiat(c.value) %>
+                                            </span>
+                                    </span>
+                            </span>
+                    </div>
+                <%});%>
+
+                <% wallet.compound.forEach((c) => {%> 
+                    <% if (parseInt(c.supplyAmount.wei) > 0) { %>
+                    <div class="DeFiCard">
+                            <span class="row logoRow">
+                                    <span class="left">
+                                            <img src="/img/compound.svg" height="26px">
+                                    </span>
+                                    <span class="right">
+                                            <a href="#">show more</a>
+                                    </span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Balance</span>
+                                    <span class="right"><%= formatFiat(c.supplyAmount.text) %> <%= c.symbol %></span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">APR</span>
+                                    <span class="right"><%= c.apr %></span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Earned</span>
+                                    <span class="right">
+                                            <span class="positive">
+                                                    <%= c.earned %> <%= c.symbol %>
+                                            </span>
+                                    </span>
+                            </span>
+                    </div>
+                    <% } %>
+                <%});%>
+
+                <% wallet.dydx.forEach((c) => {%> 
+                    <% if (parseInt(c.balanceWei) > 0) { %>
+                    <div class="DeFiCard">
+                            <span class="row logoRow">
+                                    <span class="left">
+                                            <img src="/img/dydx.svg" height="26px">
+                                    </span>
+                                    <span class="right">
+                                            <a href="#">show more</a>
+                                    </span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Balance</span>
+                                    <span class="right"><%= formatFiat(c.balance.toFixed(2).toString()) %> <%= c.symbol %></span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">APR</span>
+                                    <span class="right"><%= (c.APY*100).toFixed(2) %></span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Earned</span>
+                                    <span class="right">
+                                            <span class="positive">
+                                                    <%= c.earned.toFixed(2) %> <%= c.symbol %>
+                                            </span>
+                                    </span>
+                            </span>
+                    </div>
+                    <% } %>
+                <%});%>
+
+                <% wallet.CDPS.forEach((c) => {%> 
+                    <% if (c.riskLabel !== 'Liquidated') { %>
+                    <div class="DeFiCard">
+                            <span class="row logoRow">
+                                    <span class="left">
+                                            <img src="/img/maker.svg" height="26px">
+                                    </span>
+                                    <span class="right">
+                                            <a href="#">show more</a>
+                                    </span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Collateral</span>
+                                    <span class="right"><%= formatFiat(c.ink.toFixed(2).toString()) %> ETH</span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Debt</span>
+                                    <span class="right"><%= (c.ire.toFixed(2).toString()) %> DAI</span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Ratio</span>
+                                    <span class="right"><%= (c.ratio.toFixed(2).toString()) %></span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Liquidation Price</span>
+                                    <span class="right"><%= (c.liq_price.toFixed(2).toString()) %> USD</span>
+                            </span>
+                            <span class="row">
+                                    <span class="left">Risk</span>
+                                    <span class="right"><%= (c.riskLabel) %></span>
+                            </span>
+                    </div>
+                    <% } %>
+                <%});%>
+
+                <!--    
+                <div class="DeFiCard">
+                        <span class="row logoRow">
+                                <span class="left">
+                                        <img src="/img/bzx.svg" height="26px">
+                                </span>
+                                <span class="right">
+                                        <a href="#">show more</a>
+                                </span>
+                        </span>
+                        <span class="row">
+                                <span class="left">Balance</span>
+                                <span class="right">11,436.20 DAI</span>
+                        </span>
+                        <span class="row">
+                                <span class="left">APR</span>
+                                <span class="right">15.4%</span>
+                        </span>
+                        <span class="row">
+                                <span class="left">Earned</span>
+                                <span class="right">
+                                        <span class="positive">
+                                                321.98 DAI
+                                        </span>
+                                </span>
+                        </span>
+                </div>
+                -->
+        </div>
+
+
+        <div class="tokenContainer">
+
+                <span class="tokenCard transparent desktop">
+                        <span class="assetName title bold">Asset</span>
+                        <span class="assetAmount bold">Amount</span>
+                        <span class="assetPrice bold">Price</span>
+                        <span class="assetPriceVariation plus bold black">24h Variation</span>
+                        <span class="assetValue bold">USD Value</span>
+                </span>
+
+                <span class="tokenCard">
+                    <span class="assetLogo"><img src="/img/icons/eth.svg" height="26px"></span>
+                    <span class="assetName">Ethereum</span>
+                    <span class="assetAmount"><%= wallet.balance.toFixed(4) %> ETH</span>
+                    <span class="assetPrice">$<%= wallet.ether.price.rate %></span>
+                    <% if (wallet.ether.price.diff > 0) { %>
+                        <span class="assetPriceVariation plus"><%= wallet.ether.price.diff %>%</span>
+                    <% } else { %> 
+                        <span class="assetPriceVariation minus"><%= wallet.ether.price.diff %>%</span>
+                    <% }%>
+                    <span class="assetValue">$<%= formatFiat(wallet.ether.usdValue.toFixed(2)) %></span>
+                </span>
+
+                <% wallet.tokens.forEach((token) => {%> 
+                    <span class="tokenCard">
+                        <span class="assetLogo"><img src="<%= token.image %>" height="26px"></span>
+                        <span class="assetName"><%= token.name %></span>
+                        <span class="assetAmount"><%= token.symbol %> <%= token.balance.toFixed(4) %></span>
+                        <span class="assetPrice">
+                            <% if (token.price) { %>
+                                $<%= token.price.rate %>
+                            <% } else { %> -- <% }%>
+                        </span>
+
+                        <% if (token.price && token.price.diff > 0) { %>
+                            <span class="assetPriceVariation plus">
+                                <%= token.price.diff %>%
+                            </span>
+                        <% } else { %> 
+                            <span class="assetPriceVariation minus"><%= token.price.diff || '---' %>%</span>
+                        <% }%>
+
+                        <span class="assetValue">
+                            <% if (token.usdValue) { %>
+                                $<%= formatFiat(token.usdValue.toFixed(2)) %>
+                            <% } else { %> --- <% }%>
+                        </span>
+                    </span>    
+                    
+                <%});%>
+
+        </div>
+</body>

@@ -6,6 +6,11 @@ module.exports = {
         const wallet = await w.export();
         res.status(200).send(wallet)
     },
+    walletView: async (req, res) => {
+        const w = new EthereumHDWallet(null, req.params.wallet);
+        const wallet = await w.export();
+        res.render('wallet', {wallet: wallet});
+    },
     getTxs: async (req, res) => {
         const w = new EthereumHDWallet(null, req.params.wallet);
         await w.fetchTransactions();

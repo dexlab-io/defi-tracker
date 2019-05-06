@@ -10,7 +10,16 @@ global.fetch = require("node-fetch");
 import EthereumHDWallet from './lib/ethereum/EthereumHDWallet';
 // Set up the express app
 const app = express();
+
+// Setting logger
 app.use(logger('dev'));
+
+// Setting template engine
+app.set('view engine', 'ejs');
+
+//Setting static folders
+app.use('/css', express.static(__dirname +'/views/defi-ninja/css'));
+app.use('/img', express.static(__dirname +'/views/defi-ninja/img'));
 
 // (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());

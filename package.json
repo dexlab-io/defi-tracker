@@ -5,8 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon start.js",
-    "dev": "pm2 start start.js --watch"
+    "start": "node dist/app.js",
+    "start:dev": "nodemon start.js", 
+    "dev": "pm2 start start.js --watch",
+    "serve": "node dist/app.js",
+    "build": "babel . --ignore ./node_modules --ignore ./cli --out-dir dist"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   },
   "homepage": "https://github.com/Alexintosh/defi-tracker#readme",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/polyfill": "^7.4.4",

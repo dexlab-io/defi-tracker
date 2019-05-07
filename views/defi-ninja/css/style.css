@@ -395,7 +395,10 @@
                   align-items: center;
               }
 
-              a.menuItem {
+              .menuLeft > a{
+                opacity: 1;
+              }
+              a.menuItem  {
                   display: flex;
                   text-decoration: none;
                   opacity: 1;

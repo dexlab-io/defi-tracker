@@ -36,9 +36,9 @@ app.get('/test/:name', async (req, res) => {
 
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(200).send({
-    message: 'Suca',
-}));
+app.get('/*', async (req, res) => {
+    res.render('intro');
+});
 
 
 

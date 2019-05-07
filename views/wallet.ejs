@@ -20,7 +20,7 @@ formatFiat = (value, separator=',', decimal='.') => {
         <meta charSet="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <title>Dexlab.io - The Open Financial System of the future. Today.</title>
+        <title>DexWallet DeFi Tracker - The Open Financial System of the future. Today.</title>
         <meta name="description"
                 content="Saving, Investing, Exchange, Lending and Insurance services for individuals and commerce.">
         <meta name="keywords"
@@ -32,9 +32,16 @@ formatFiat = (value, separator=',', decimal='.') => {
         <link rel="shortcut icon" href="/img/favicon.ico" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,700" rel="stylesheet">
 
-        <style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139652771-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-        </style>
+        gtag('config', 'UA-139652771-1');
+        </script>
+
 
 </head>
 
@@ -42,7 +49,9 @@ formatFiat = (value, separator=',', decimal='.') => {
 
                 <div class="walletContainer">
                         <span class="menuLeft">
-                                <span class="walletLogo"><img src="/img/wallet.svg" height="30px"></span>
+                                <a href="/"></a>
+                                    <span class="walletLogo"><img src="/img/wallet.svg" height="30px"></span>
+                                </a>
                                 <span class="topAddress">
                                         <span class="yourAddressTitle">Your Address </span>
                                         <span class="yourAddress"><%= wallet.address %></span>
@@ -52,7 +61,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                                 <span class="yourBalance">+$ <%= formatFiat(wallet.netWorthUSD) %></span>
                         </span>
                 </span>
-                                <span class="hamburgerMenu"><a href="#"><img src="/img/hamburger.svg" height="20px"></a></span>
+                                <!-- <span class="hamburgerMenu"><a href="#"><img src="/img/hamburger.svg" height="20px"></a></span> -->
                 </div>
 
 
@@ -63,6 +72,7 @@ formatFiat = (value, separator=',', decimal='.') => {
         <div class="cardsContainer">
 
                 <% wallet.uniswap.forEach((c) => {%> 
+                    <% if (parseFloat(c.liquidityTokens) > 0) { %>
                     <div class="DeFiCard">
                             <span class="row logoRow">
                                     <span class="left">
@@ -89,10 +99,11 @@ formatFiat = (value, separator=',', decimal='.') => {
                                     </span>
                             </span>
                     </div>
+                    <% } %>
                 <%});%>
 
                 <% wallet.compound.forEach((c) => {%> 
-                    <% if (parseInt(c.supplyAmount.wei) > 0) { %>
+                    <% if (c.supplyAmount && c.supplyAmount.text && parseFloat(c.supplyAmount.text) > 0) { %>
                     <div class="DeFiCard">
                             <span class="row logoRow">
                                     <span class="left">
@@ -139,7 +150,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                             </span>
                             <span class="row">
                                     <span class="left">APR</span>
-                                    <span class="right"><%= (c.APY*100).toFixed(2) %></span>
+                                    <span class="right"><%= (c.APY).toFixed(2) %>%</span>
                             </span>
                             <span class="row">
                                     <span class="left">Earned</span>
@@ -243,13 +254,14 @@ formatFiat = (value, separator=',', decimal='.') => {
                 </span>
 
                 <% wallet.tokens.forEach((token) => {%> 
+                    <% if (token.balance > 0.0000) { %>
                     <span class="tokenCard">
                         <span class="assetLogo"><img src="<%= token.image %>" height="26px"></span>
                         <span class="assetName"><%= token.name %></span>
                         <span class="assetAmount"><%= token.symbol %> <%= token.balance.toFixed(4) %></span>
                         <span class="assetPrice">
-                            <% if (token.price) { %>
-                                $<%= token.price.rate %>
+                            <% if (token.price && token.price.rate) { %>
+                                $<%= token.price.rate.toFixed(2) %>
                             <% } else { %> -- <% }%>
                         </span>
 
@@ -266,7 +278,8 @@ formatFiat = (value, separator=',', decimal='.') => {
                                 $<%= formatFiat(token.usdValue.toFixed(2)) %>
                             <% } else { %> --- <% }%>
                         </span>
-                    </span>    
+                    </span> 
+                    <% }%>   
                     
                 <%});%>
 
@@ -274,5 +287,5 @@ formatFiat = (value, separator=',', decimal='.') => {
 
         <section class="footerMenu">
                 <a class="menuItem" target="_blank" href="https://www.dexwallet.io">Powered by&nbsp;<img src="/img/dexwallet.png" height="20px"></a>
-            </section>
+        </section>
 </body>

@@ -17,12 +17,6 @@
                   --main-font: 'Roboto Mono', monospace;
               }
 
-              ::-webkit-scrollbar {
-                  width: 0px;
-                  /* Remove scrollbar space */
-                  background: transparent;
-                  /* Optional: just make scrollbar invisible */
-              }
 
               html, body {
                   margin: 0;
@@ -234,18 +228,35 @@
               /* Cards */
 
               .cardsContainer {
-                  display: flex;
-                  flex-direction: row;
-                  align-items: flex-start;
-                  justify-content: space-between;
-                  width: 92%;
-                  padding: 2% 4% 0 4%;
-                  flex-wrap: nowrap;
-                  overflow-x: scroll;
-                  overflow-y: hidden;
-                  white-space: nowrap;
-                  -webkit-overflow-scrolling: touch;
-              }
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+                width: 92%;
+                padding: 2% 4% 0 4%;
+                flex-wrap: nowrap;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            ::-webkit-scrollbar {
+                visibility: hidden;
+            }
+
+            .cardsContainer:hover::-webkit-scrollbar {
+                visibility: visible;
+            }
+
+            .cardsContainer:hover::-webkit-scrollbar {
+                background: #F2F2F2;
+            }
+
+            .cardsContainer:hover::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background: #cfcfcf;
+            }
 
               .DeFiCard {
                   width: 300px;

@@ -28,12 +28,27 @@
 
             $( "#start" ).click(function() {
                 var address = $('#addressInp').val();
-                if( validateInputAddresses(address) ) {
-                    $( "#start" ).text('Loading...');
-                    $(location).attr('href','/wallet/'+address)
+                $( "#start" ).text('Loading...');
+
+                if( address.includes('.eth')) {
+                    $.get('/api/ens/'+address).then( res => {
+                        if(res){
+                            $(location).attr('href','/wallet/'+res)
+                        } else {
+                            alert('ENS name not found');
+                            $( "#start" ).text('start');
+                        }
+                    })
                 } else {
-                    alert('Invalid address')
+                    if( validateInputAddresses(address) ) {
+                        $( "#start" ).text('Loading...');
+                        $(location).attr('href','/wallet/'+address)
+                    } else {
+                        alert('Invalid address')
+                        $( "#start" ).text('start');
+                    }
                 }
+                
             });
         });
     </script>
@@ -45,7 +60,7 @@
     <div class="introContainer">
         <span class="topLogo"><img src="img/wallet.svg" height="50px"></span>
         <span class="defitrackerLogo">DeFi Tracker</span>
-        <input id="addressInp" type="text" placeholder="Your Eth address here..." />
+        <input id="addressInp" type="text" placeholder="Your Eth or ENS address here..." />
         <button id="start">start</button>
         <span class="curious">Curious? Have a look at the demo below!</span>
     </div>

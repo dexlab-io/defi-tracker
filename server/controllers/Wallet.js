@@ -1,10 +1,20 @@
 import EthereumHDWallet from '../../lib/ethereum/EthereumHDWallet';
+import ENSResolver from '../../lib/ethereum/ENSResolver';
 
 module.exports = {
     get: async (req, res) => {
         const w = new EthereumHDWallet(null, req.params.wallet);
         const wallet = await w.export();
         res.status(200).send(wallet)
+    },
+    ens: async (req, res) => {
+        const w = new ENSResolver();
+        w.byDomain(req.params.wallet)
+            .then(address => {
+                res.status(200).send(address)
+            }).catch( e => {
+                res.status(200).send(false)
+            })
     },
     walletView: async (req, res) => {
         const w = new EthereumHDWallet(null, req.params.wallet);

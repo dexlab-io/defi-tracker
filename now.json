@@ -1,11 +1,3 @@
 {
-  "version": 1,
-  "alias": ["www.defitracker.io"],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "status": 301,
-      "headers": { "Location": "https://defitracker.io/$1" }
-    }
-  ]
+  "version": 1
 }

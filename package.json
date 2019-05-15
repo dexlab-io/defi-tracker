@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon start.js",
+    "start": "node start.js",
     "start:dev": "nodemon start.js",
     "dev": "pm2 start start.js --watch"
   },

@@ -34,12 +34,13 @@ formatFiat = (value, separator=',', decimal='.') => {
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139652771-1"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+        <script>    
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-        gtag('config', 'UA-139652771-1');
+                gtag('config', 'UA-139652771-1');
         </script>
 
 
@@ -256,7 +257,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                 <% wallet.tokens.forEach((token) => {%> 
                     <% if (token.balance > 0.0000) { %>
                     <span class="tokenCard">
-                        <span class="assetLogo"><img src="<%= token.image %>" height="26px"></span>
+                        <span class="assetLogo"><img src="/img/wallet.svg" class="lazy" data-src="/image/token/<%= token.contractAddress %>" height="26px"></span>
                         <span class="assetName"><%= token.name %></span>
                         <span class="assetAmount"><%= token.symbol %> <%= token.balance.toFixed(4) %></span>
                         <span class="assetPrice">
@@ -290,3 +291,8 @@ formatFiat = (value, separator=',', decimal='.') => {
                 <p><a class="menuItem" target="_blank" href="https://quiknode.io">Node offered by QuikNode.io ❤️</a></p>
         </section>
 </body>
+<script>
+        var lazyLoadInstance = new LazyLoad({
+                elements_selector: ".lazy"
+        });
+</script>

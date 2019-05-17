@@ -1,4 +1,5 @@
 import {UniPool, Wallet} from '../controllers';
+import urlExists from 'url-exists';
 
 module.exports = (app) => {
     app.get('/api/unipools', UniPool.getAll);
@@ -6,6 +7,19 @@ module.exports = (app) => {
     app.get('/api/unipool/exchange/:exchangeAddress', UniPool.byExchangeAddress);
     app.get('/api/unipool/exchange/:exchangeAddress/update', UniPool.updateStats);
 
+
+    app.get('/image/token/:address', async (req, res) => {
+        const url = `https://raw.githubusercontent.com/Alexintosh/tokens/master/images/${req.params.address}.png`;
+        urlExists(url, (err, exists) =>{
+            console.log(exists); // true
+            if( exists ){
+                res.redirect(url);
+            } else {
+                res.redirect('/img/wallet.svg');
+            }
+        });
+    });
+    
 
     /**
      * Wallet API

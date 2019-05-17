@@ -35,7 +35,7 @@
                     return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
             }
 
-            $( "#start" ).click(function() {
+            function search() {
                 var address = $('#addressInp').val();
                 $( "#start" ).text('Loading...');
 
@@ -58,7 +58,18 @@
                     }
                 }
                 
+            }
+
+            $('input').bind("enterKey", search);
+
+            $('input').keyup(function(e){
+                if(e.keyCode == 13)
+                {
+                    $(this).trigger("enterKey");
+                }
             });
+
+            $( "#start" ).click(search);
         });
     </script>
     

@@ -152,14 +152,14 @@ formatFiat = (value, separator=',', decimal='.') => {
                                     <span class="left">APR</span>
                                     <span class="right"><%= (c.APY).toFixed(2) %>%</span>
                             </span>
-                            <span class="row">
+                            <!-- <span class="row">
                                     <span class="left">Earned</span>
                                     <span class="right">
                                             <span class="positive">
                                                     <%= c.earned.toFixed(2) %> <%= c.symbol %>
                                             </span>
                                     </span>
-                            </span>
+                            </span> -->
                     </div>
                     <% } %>
                 <%});%>
@@ -177,7 +177,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                             </span>
                             <span class="row">
                                     <span class="left">Collateral</span>
-                                    <span class="right"><%= formatFiat(c.ink.toFixed(2).toString()) %> ETH</span>
+                                    <span class="right"><%= formatFiat(c.eth.toFixed(2).toString()) %> ETH</span>
                             </span>
                             <span class="row">
                                     <span class="left">Debt</span>
@@ -236,7 +236,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                         <span class="assetName title bold">Asset</span>
                         <span class="assetAmount bold">Amount</span>
                         <span class="assetPrice bold">Price</span>
-                        <span class="assetPriceVariation plus bold black">24h Variation</span>
+                        <span class="assetPriceVariation plus bold black">24h</span>
                         <span class="assetValue bold">USD Value</span>
                 </span>
 
@@ -244,7 +244,7 @@ formatFiat = (value, separator=',', decimal='.') => {
                     <span class="assetLogo"><img src="/img/icons/eth.svg" height="26px"></span>
                     <span class="assetName">Ethereum</span>
                     <span class="assetAmount"><%= wallet.balance.toFixed(4) %> ETH</span>
-                    <span class="assetPrice">$<%= wallet.ether.price.rate %></span>
+                    <span class="assetPrice">$<%= parseFloat(wallet.ether.price.rate).toFixed(2) %></span>
                     <% if (wallet.ether.price.diff > 0) { %>
                         <span class="assetPriceVariation plus"><%= wallet.ether.price.diff %>%</span>
                     <% } else { %> 

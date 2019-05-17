@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
+import { Solo } from '@dydxprotocol/solo';
 /**
  * Poly for fetch
  */
@@ -30,8 +31,17 @@ require('./server/routes')(app);
 
 app.get('/test/:name', async (req, res) => {
     const t = new EthereumHDWallet(req.params.name);
-    await t.fetchBalance();
-    res.status(200).send(`${t.getAddress()} - ${t.balance} - ${req.params.name}`) 
+    
+    const solo = new Solo(
+        t.networkUrl,  // Valid web3 provider
+        1, // Ethereum network ID (1 - Mainnet, 42 - Kovan, etc.)
+    );
+
+    const balances = await solo.getters.getMarketWithInfo(1);
+
+    console.log('balances', balances.toString())
+
+    res.status(200).send(balances)
 });
 
 

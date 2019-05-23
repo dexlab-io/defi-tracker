@@ -165,6 +165,31 @@ formatFiat = (value, separator=',', decimal='.') => {
                     <% } %>
                 <%});%>
 
+                <% if (parseInt(wallet.ethlend.totalBalanceUSD) > 0) { %>
+                <div class="DeFiCard">
+                        <span class="row logoRow">
+                                <span class="left">
+                                        <img src="/img/ethlend.png" height="26px">
+                                </span>
+                                <span class="right">
+                                        <a href="https://ethlend.io/">show more</a>
+                                </span>
+                        </span>
+                        <span class="row">
+                                <span class="left">Balance</span>
+                                <span class="right"><%= formatFiat(wallet.ethlend.totalBalanceUSD.toFixed(2).toString()) %> USD</span>
+                        </span>
+                        <span class="row">
+                                <span class="left">Collateral</span>
+                                <span class="right"><%= (wallet.ethlend.totalCollateralUSD).toFixed(2) %> USD</span>
+                        </span>
+                        <span class="row">
+                                <span class="left">Avg APR</span>
+                                <span class="right"><%= (wallet.ethlend.avgLendApr).toFixed(2) %>%</span>
+                        </span>
+                </div>
+                <% } %>
+
                 <% wallet.CDPS.forEach((c) => {%> 
                     <% if (c.riskLabel !== 'Liquidated') { %>
                     <div class="DeFiCard">

@@ -108,10 +108,10 @@ formatFiat = (value, separator=',', decimal='.') => {
                     <div class="DeFiCard">
                             <span class="row logoRow">
                                     <span class="left">
-                                            <img src="/img/compound.svg" height="26px">
+                                            <img src="/img/compound.svg" height="26px">v1
                                     </span>
                                     <span class="right">
-                                            <a href="https://app.compound.finance/">show more</a>
+                                            <a href="https://legacy.compound.finance/">show more</a>
                                     </span>
                             </span>
                             <span class="row">
@@ -133,6 +133,37 @@ formatFiat = (value, separator=',', decimal='.') => {
                     </div>
                     <% } %>
                 <%});%>
+
+                <% wallet.compound2.forEach((c) => {%> 
+                        <% if (c.supplyAmount && c.supplyAmount.text && parseFloat(c.supplyAmount.text) > 0) { %>
+                        <div class="DeFiCard">
+                                <span class="row logoRow">
+                                        <span class="left">
+                                                <img src="/img/compound.svg" height="26px"> v2
+                                        </span>
+                                        <span class="right">
+                                                <a href="https://app.compound.finance/">show more</a>
+                                        </span>
+                                </span>
+                                <span class="row">
+                                        <span class="left">Balance</span>
+                                        <span class="right"><%= formatFiat(c.supplyAmount.text) %> <%= c.symbol %></span>
+                                </span>
+                                <span class="row">
+                                        <span class="left">APR</span>
+                                        <span class="right"><%= c.apr %>%</span>
+                                </span>
+                                <span class="row">
+                                        <span class="left">Earned</span>
+                                        <span class="right">
+                                                <span class="positive">
+                                                        <%= c.earned ? formatFiat(c.earned) : '???' %> <%= c.symbol %>
+                                                </span>
+                                        </span>
+                                </span>
+                        </div>
+                        <% } %>
+                    <%});%>
 
                 <% wallet.dydx.forEach((c) => {%> 
                     <% if (parseInt(c.balanceWei) > 0) { %>

@@ -21,6 +21,8 @@ app.set('view engine', 'ejs');
 //Setting static folders
 app.use('/css', express.static(__dirname +'/views/defi-ninja/css'));
 app.use('/img', express.static(__dirname +'/views/defi-ninja/img'));
+app.use('/.well-known', express.static(__dirname +'/.well-known'));
+
 
 // (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());

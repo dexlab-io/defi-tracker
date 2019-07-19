@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: defitracker.io
+Token: b4eeb696da7ef0a9be867ea2e97ca6df38099eb558ae123efdee019419b520ad

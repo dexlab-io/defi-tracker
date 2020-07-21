@@ -44,7 +44,7 @@
     "ethereumjs-wallet": "0.6.0",
     "ethjs-ens": "^2.0.1",
     "express": "^4.16.4",
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "mariadb": "^2.0.3",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
